@@ -46,33 +46,6 @@ public class PlantGrowListener implements Listener {
             farm.set(player.getFarmPorMeta(farmMeta));
         });
 
-        if(tipo != Material.NETHER_STALK) {
-            e.getBlock().getLocation().clone().add(0, 1, 0).getBlock().setType(Material.AIR);
-        }
-
-        if(farm.get() == null) return;
-        farm.get().addQuantidadeGerada(BigDecimal.valueOf(farmMeta.getQuantidadePorGeracao()));
-    }
-
-    @EventHandler
-    public void onChorusGrow(BlockSpreadEvent e) {
-        Location localDoBloco = e.getBlock().getLocation();
-        System.out.println(e.getBlock().getType());
-        FarmMeta farmMeta = FarmMetas.getFarmPorMaterial(localDoBloco.getBlock().getType());
-
-        if(farmMeta == null) return;
-
-        e.setCancelled(true);
-        e.getBlock().getLocation().clone().add(0, 1, 0).getBlock().setType(Material.AIR);
-
-        AtomicReference<Farm> farm = new AtomicReference<>(null);
-        Players.getPlayers().forEach((player) -> {
-            Player playerB = Bukkit.getServer().getPlayer(player.getNickname());
-            if(playerB == null || !playerB.isOnline()) return;
-            if(!player.getFarmPorMeta(farmMeta).getLocais().contains(localDoBloco)) return;
-            farm.set(player.getFarmPorMeta(farmMeta));
-        });
-
         if(farm.get() == null) return;
         farm.get().addQuantidadeGerada(BigDecimal.valueOf(farmMeta.getQuantidadePorGeracao()));
     }

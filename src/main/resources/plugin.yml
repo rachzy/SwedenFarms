@@ -18,3 +18,8 @@ commands:
       - farms
       - storage
       - plantacoes
+  dartorre:
+    usage: /<command> <player> <height>
+    aliases:
+      - givetower
+      - dartower
