@@ -1,0 +1,20 @@
+name: SwedenFarms
+version: '${project.version}'
+main: com.redesweden.swedenfarms.SwedenFarms
+api-version: 1.8.8
+authors: [ rachzy ]
+description: Plugin de Farms e Plantações original do Rede Sweden
+depend: [SwedenEconomia, SwedenMinas]
+permissions:
+  swedenfarms.admin:
+    description: Dá permissões de Admin ao jogador
+    default: op
+commands:
+  armazem:
+    usage: /<command>
+    aliases:
+      - drops
+      - farm
+      - farms
+      - storage
+      - plantacoes

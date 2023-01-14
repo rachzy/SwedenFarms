@@ -1,0 +1,11 @@
+farms:
+  CACTO:
+    titulo: §2Cacto
+    materialID: 81
+    materialSubID: 0
+    quantidadePorGeracao: 25
+  FUNGOS:
+    titulo: §cFungo
+    materialID: 115
+    materialSubID: 0
+    quantidadePorGeracao: 10
