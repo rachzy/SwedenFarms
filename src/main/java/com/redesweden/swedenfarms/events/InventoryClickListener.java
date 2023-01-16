@@ -16,9 +16,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class InventoryClickListener implements Listener {
     @EventHandler
@@ -72,7 +75,7 @@ public class InventoryClickListener implements Listener {
                 Bolsa.venderCactos(player.getName(), farm.getQuantidadeGerada());
 
                 player.playSound(player.getLocation(), Sound.LEVEL_UP, 3.0F, 0.5F);
-                player.sendMessage(String.format("§a§lFARMS §e>> §aVocê vendeu §e%s %ss §a por $§f%s", new ConverterQuantia(farm.getQuantidadeGerada()).emLetras(), farm.getMeta().getTitulo(), new ConverterQuantia(valorNaBolsa.multiply(farm.getQuantidadeGerada())).emLetras()));
+                player.sendMessage(String.format("§a§lFARMS §e>> §aVocê vendeu §e%s %ss §apor $§f%s", new ConverterQuantia(farm.getQuantidadeGerada()).emLetras(), farm.getMeta().getTitulo(), new ConverterQuantia(valorNaBolsa.multiply(farm.getQuantidadeGerada())).emLetras()));
 
                 farm.setQuantidadeGerada(BigDecimal.ZERO);
                 player.openInventory(new ArmazemGUI(player.getName()).get());
@@ -90,6 +93,18 @@ public class InventoryClickListener implements Listener {
                 if(farmMeta.getId().equals("FUNGOS")) {
                     item = new ItemStack(372, 1);
                 }
+
+                ItemMeta itemMeta = item.getItemMeta();
+                itemMeta.setDisplayName(farmMeta.getTitulo());
+
+                List<String> loreItem = new ArrayList<>();
+                loreItem.add("§7Este item foi coletado de um armazém");
+                loreItem.add("");
+                loreItem.add("§7Clique §a§lESQUERDO §7para armazenar 64");
+                loreItem.add("§7Shift + Clique §a§lESQUERDO §7para armazenar tudo");
+                itemMeta.setLore(loreItem);
+
+                item.setItemMeta(itemMeta);
 
                 item.setAmount(quantidadeColetada);
 

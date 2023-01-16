@@ -103,9 +103,6 @@ public class BlockPlaceListener implements Listener {
 
                             farm.addLocal(bloco.getLocation().clone().add(0, 2, 0));
 
-                            System.out.println(bloco.getLocation());
-                            System.out.println(bloco.getType());
-
                             if(centro.getBlock().getLocation().clone().add(0, finalI + 3, 0).getBlock().getType() != Material.SEA_LANTERN) {
                                 centro.getBlock().getLocation().clone().add(0, finalI + 3, 0).getBlock().setType(Material.SEA_LANTERN);
                             }

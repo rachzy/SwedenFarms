@@ -36,12 +36,14 @@ public class PlayersFile {
 
         playersFile = YamlConfiguration.loadConfiguration(file);
 
-        Bukkit.getScheduler().runTaskLater(SwedenFarms.getPlugin(SwedenFarms.class), PlayersFile::lerDados, 10L);
-
-        Players.iniciarSalvamentoAutomatico();
+        Bukkit.getScheduler().runTaskLater(SwedenFarms.getPlugin(SwedenFarms.class), () -> {
+            lerDados();
+            Players.iniciarSalvamentoAutomatico();
+        }, 10L);
     }
 
     public static void lerDados() {
+        playersFile = YamlConfiguration.loadConfiguration(file);
         if(playersFile.getConfigurationSection("players") != null) {
             for(String uuid : playersFile.getConfigurationSection("players").getKeys(false)) {
                 String nickname = playersFile.getString(String.format("players.%s.nickname", uuid));
@@ -59,7 +61,14 @@ public class PlayersFile {
                             String[] localSplit = local.split(",");
                             Location localFarm = new Location(Bukkit.getWorld(localSplit[0]), Double.parseDouble(localSplit[1]), Double.parseDouble(localSplit[2]), Double.parseDouble(localSplit[3]));
 
-                            if(localFarm.getBlock() != null && localFarm.getBlock().getType() == farmMeta.getItem().getType()) {
+                            if(Bukkit.getWorld(localFarm.getWorld().getName()) == null) {
+                                locais.add(localFarm);
+                                return;
+                            }
+
+                            Bukkit.getWorld(localFarm.getWorld().getName()).loadChunk((int) localFarm.getX(), (int) localFarm.getY());
+
+                            if(Bukkit.getWorld(localFarm.getWorld().getName()) == null || localFarm.getBlock() != null && localFarm.getBlock().getType() == farmMeta.getItem().getType()) {
                                 locais.add(localFarm);
                             }
                         });

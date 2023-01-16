@@ -30,6 +30,7 @@ public final class SwedenFarms extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new PlantGrowListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerInteractionListener(), this);
 
         // Registrar comandos
         getCommand("armazem").setExecutor(new ArmazemCommand());

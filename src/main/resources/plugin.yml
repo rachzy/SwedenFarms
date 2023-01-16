@@ -4,7 +4,7 @@ main: com.redesweden.swedenfarms.SwedenFarms
 api-version: 1.8.8
 authors: [ rachzy ]
 description: Plugin de Farms e Plantações original do Rede Sweden
-depend: [SwedenEconomia, SwedenMinas]
+depend: [SwedenEconomia, SwedenMinas, MultiWorld]
 permissions:
   swedenfarms.admin:
     description: Dá permissões de Admin ao jogador
@@ -18,6 +18,8 @@ commands:
       - farms
       - storage
       - plantacoes
+      - cactos
+      - fungos
   dartorre:
     usage: /<command> <player> <height>
     aliases:
