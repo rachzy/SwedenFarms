@@ -63,26 +63,10 @@
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
         <repository>
-            <id>papermc</id>
-            <url>https://repo.papermc.io/repository/maven-public/</url>
-        </repository>
-        <repository>
             <id>enginehub-maven</id>
             <url>https://maven.enginehub.org/repo/</url>
         </repository>
     </repositories>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.intellectualsites.bom</groupId>
-                <artifactId>bom-1.18.x</artifactId>
-                <version>1.22</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -104,6 +88,20 @@
             <scope>system</scope>
             <version>1.0.0</version>
             <systemPath>C:/Users/gomes/OneDrive/Documentos/GitHub/SwedenMinas/target/SwedenMinas-1.0.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.redesweden</groupId>
+            <artifactId>SwedenSpawners</artifactId>
+            <scope>system</scope>
+            <version>1.0.0</version>
+            <systemPath>C:/Users/gomes/OneDrive/Documentos/GitHub/SwedenSpawners/target/SwedenSpawners-1.0.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.redesweden</groupId>
+            <artifactId>SwedenCash</artifactId>
+            <scope>system</scope>
+            <version>1.0.0</version>
+            <systemPath>C:/Users/gomes/OneDrive/Documentos/GitHub/SwedenCash/target/SwedenCash-1.0.0.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

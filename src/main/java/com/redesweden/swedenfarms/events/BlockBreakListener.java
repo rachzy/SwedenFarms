@@ -4,7 +4,6 @@ import com.redesweden.swedenfarms.data.FarmMetas;
 import com.redesweden.swedenfarms.data.Players;
 import com.redesweden.swedenfarms.models.FarmMeta;
 import com.redesweden.swedenfarms.models.PlayerFarms;
-import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

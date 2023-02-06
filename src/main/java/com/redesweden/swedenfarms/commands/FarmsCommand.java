@@ -1,6 +1,7 @@
 package com.redesweden.swedenfarms.commands;
 
 import com.redesweden.swedenfarms.GUIs.ArmazemGUI;
+import com.redesweden.swedenfarms.files.ConfigFile;
 import com.redesweden.swedenfarms.files.PlayersFile;
 import com.redesweden.swedenminas.data.Players;
 import org.bukkit.Sound;
@@ -9,7 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class ArmazemCommand implements CommandExecutor {
+public class FarmsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(args.length == 0 || !args[0].equals("reload")) {
@@ -38,7 +39,7 @@ public class ArmazemCommand implements CommandExecutor {
             return true;
         }
 
-        PlayersFile.lerDados();
+        ConfigFile.lerDados();
         if(sender instanceof Player) {
             Player player = (Player) sender;
             player.playSound(player.getLocation(), Sound.NOTE_BASS_GUITAR, 3.0F, 0.5F);

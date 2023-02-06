@@ -1,3 +1,7 @@
+# Quantidade de itens mínimos necessários para obtenção de 1 de limite
+quantidadeNecessariaPorLimite: 1K
+
+# Farms
 farms:
   CACTO:
     titulo: §2Cacto
@@ -9,3 +13,6 @@ farms:
     materialID: 115
     materialSubID: 0
     quantidadePorGeracao: 10
+
+# Preço por altura da torre (Ex: 1 de altura = 1K / 5 de altura = 5K)
+precoPorAltura: 3K

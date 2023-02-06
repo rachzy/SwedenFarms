@@ -4,24 +4,31 @@ main: com.redesweden.swedenfarms.SwedenFarms
 api-version: 1.8.8
 authors: [ rachzy ]
 description: Plugin de Farms e Plantações original do Rede Sweden
-depend: [SwedenEconomia, SwedenMinas, MultiWorld]
+depend: [SwedenEconomia, SwedenMinas, SwedenSpawners, MultiWorld, PlotSquared]
 permissions:
   swedenfarms.admin:
     description: Dá permissões de Admin ao jogador
     default: op
 commands:
-  armazem:
+  farms:
+    description: Gerencia suas farms
     usage: /<command>
     aliases:
       - drops
       - farm
-      - farms
       - storage
       - plantacoes
       - cactos
       - fungos
   dartorre:
+    description: Dá uma torre de cactos à um jogador
     usage: /<command> <player> <height>
     aliases:
       - givetower
       - dartower
+  torres:
+    description: Abre o menu de compra de torres
+    usage: /<command>
+    aliases:
+      - towers
+      - comprartorres

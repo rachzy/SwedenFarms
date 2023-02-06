@@ -5,12 +5,12 @@ import com.redesweden.swedeneconomia.functions.ConverterQuantia;
 import com.redesweden.swedeneconomia.models.PlayerSaldo;
 import com.redesweden.swedenfarms.data.FarmMetas;
 import com.redesweden.swedenfarms.data.Players;
+import com.redesweden.swedenfarms.files.ConfigFile;
 import com.redesweden.swedenfarms.models.Farm;
 import com.redesweden.swedenfarms.models.FarmMeta;
 import com.redesweden.swedenfarms.models.PlayerFarms;
 import dev.dbassett.skullcreator.SkullCreator;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArmazemGUI {
-    private final Inventory inventario = Bukkit.createInventory(null, 45, "§2Armazém de Farms");
+    private final Inventory inventario = Bukkit.createInventory(null, 45, "§8Armazém de Farms");
 
     public ArmazemGUI(String nickname) {
         PlayerFarms playerFarms = Players.getPlayerByNickname(nickname);
@@ -54,18 +54,16 @@ public class ArmazemGUI {
             itemMeta.setDisplayName(String.format("%ss", meta.getTitulo()));
             
             List<String> loreItem = new ArrayList<>();
-            if(farm.getQuantidadeLiquida() > 0) {
-                loreItem.add("");
-                loreItem.add(" §e| §7Quantidade farmada: §e" + new ConverterQuantia(farm.getQuantidadeGerada()).emLetras());
-                loreItem.add(" §2| §7Valor unitário na bolsa: §2$" + new ConverterQuantia(valorNaBolsa).emLetras());
-                loreItem.add("");
-                loreItem.add(" §a| §7Valor total: §a$" + new ConverterQuantia(valorNaBolsa.multiply(farm.getQuantidadeGerada())).emLetras());
-                loreItem.add("");
-                loreItem.add("§fClique §a§lESQUERDO §fpara vender tudo");
-                loreItem.add("§fClique §a§lDIREITO §fpara coletar 64");
-            } else {
-                loreItem.add("§cVocê ainda não tem uma farm deste item.");
-            }
+            loreItem.add("");
+            loreItem.add(" §e| §7Quantidade farmada: §e" + new ConverterQuantia(farm.getQuantidadeGerada()).emLetras());
+            loreItem.add(" §2| §7Valor unitário na bolsa: §2$" + new ConverterQuantia(valorNaBolsa).emLetras());
+            loreItem.add("");
+            loreItem.add(" §a| §7Valor total: §a$" + new ConverterQuantia(valorNaBolsa.multiply(farm.getQuantidadeGerada())).emLetras());
+            loreItem.add(" §c| §7Valor em limite: §c✤" + new ConverterQuantia(farm.getQuantidadeGerada().add(BigDecimal.valueOf(1)).divideToIntegralValue(ConfigFile.getQuantidadeNecessariaPorLimite())).emLetras());
+            loreItem.add("");
+            loreItem.add("§fClique §a§lESQUERDO §fpara vender tudo");
+            loreItem.add("§fClique §a§lDIREITO §fpara coletar 64");
+            loreItem.add("§fAperte §a§lQ §fpara trocar por §c§lLIMITE");
             itemMeta.setLore(loreItem);
 
             farmItem.setItemMeta(itemMeta);

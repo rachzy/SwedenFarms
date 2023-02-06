@@ -60,17 +60,7 @@ public class PlayersFile {
                         playersFile.getStringList(String.format("players.%s.farms.%s.locais", uuid, id)).forEach((local) -> {
                             String[] localSplit = local.split(",");
                             Location localFarm = new Location(Bukkit.getWorld(localSplit[0]), Double.parseDouble(localSplit[1]), Double.parseDouble(localSplit[2]), Double.parseDouble(localSplit[3]));
-
-                            if(Bukkit.getWorld(localFarm.getWorld().getName()) == null) {
-                                locais.add(localFarm);
-                                return;
-                            }
-
-                            Bukkit.getWorld(localFarm.getWorld().getName()).loadChunk((int) localFarm.getX(), (int) localFarm.getY());
-
-                            if(Bukkit.getWorld(localFarm.getWorld().getName()) == null || localFarm.getBlock() != null && localFarm.getBlock().getType() == farmMeta.getItem().getType()) {
-                                locais.add(localFarm);
-                            }
+                            locais.add(localFarm);
                         });
 
 

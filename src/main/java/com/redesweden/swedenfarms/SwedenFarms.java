@@ -1,7 +1,8 @@
 package com.redesweden.swedenfarms;
 
-import com.redesweden.swedenfarms.commands.ArmazemCommand;
+import com.redesweden.swedenfarms.commands.FarmsCommand;
 import com.redesweden.swedenfarms.commands.DarTorreCommand;
+import com.redesweden.swedenfarms.commands.TorresCommand;
 import com.redesweden.swedenfarms.data.Players;
 import com.redesweden.swedenfarms.events.*;
 import com.redesweden.swedenfarms.files.ConfigFile;
@@ -33,8 +34,9 @@ public final class SwedenFarms extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerInteractionListener(), this);
 
         // Registrar comandos
-        getCommand("armazem").setExecutor(new ArmazemCommand());
+        getCommand("farms").setExecutor(new FarmsCommand());
         getCommand("dartorre").setExecutor(new DarTorreCommand());
+        getCommand("torres").setExecutor(new TorresCommand());
     }
 
     @Override

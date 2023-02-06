@@ -124,6 +124,13 @@ public class BlockPlaceListener implements Listener {
                 return;
             }
 
+            e.setCancelled(true);
+            if(player.getItemInHand().getAmount() == 1) {
+                player.setItemInHand(new ItemStack(Material.AIR));
+            } else {
+                player.getItemInHand().setAmount(player.getItemInHand().getAmount() - 1);
+            }
+
             farm.addQuantidadeLiquida(altura * 4);
             player.playSound(player.getLocation(), Sound.LEVEL_UP, 3.0F, 2F);
             player.sendMessage(String.format("§a§lFARMS §e>> §aVocê colocou §e+%s §2Cactos §acom sua torre.", altura * 4));

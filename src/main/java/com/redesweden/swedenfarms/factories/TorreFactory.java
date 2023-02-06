@@ -28,6 +28,6 @@ public class TorreFactory {
         torreMeta.setLore(loreTorre);
 
         torreHead.setItemMeta(torreMeta);
-        return torreHead;
+        return torreHead.clone();
     }
 }
